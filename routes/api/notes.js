@@ -1,7 +1,10 @@
 const { Router } = require('express');
 const notesController = require('../../controllers/notes.js')
+const authenticateToken = require('../../middlewares/authToken.js')
 
 const router = new Router();
+
+router.all('*', authenticateToken)
 
 router.get('/', notesController.index);
 router.get('/view/:slug', notesController.view);

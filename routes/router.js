@@ -1,13 +1,4 @@
-// const { Router } = require('express');
-// const router = new Router();
 
-// router.get('/api/v1', (req, res) => {
-//     res.json({text: 'Halo dunia'})
-// })
-
-// router.get('/api/home', (req, res) => {
-//     res.json({text: 'Halo dunia'})
-// })
 const { Router } = require('express');
 const router = new Router();
 // split up route handling

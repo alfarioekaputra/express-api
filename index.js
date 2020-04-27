@@ -4,7 +4,6 @@ const bodyParser = require('body-parser')
 const app = express()
 const logger = require('morgan')
 
-
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
 

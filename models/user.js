@@ -1,6 +1,8 @@
 const bcrypt = require('bcrypt');
 const { Model } = require('objection');
 const knex = require('../config/db.js');
+const jwt = require('jsonwebtoken');
+const config = require('../config/web.js')
 
 Model.knex(knex);
 
@@ -64,9 +66,18 @@ async function login(email, password) {
                     'message': 'wrong username or password'
                 }
             }else {
+                const payload = {
+                    check:  true
+                };
+                
+                var token = jwt.sign(payload, config.secret, {
+                    expiresIn: 1440 // expires in 24 hours
+                });
+
                 return {
                     'error': false, 
-                    'message': 'Login success'
+                    'message': 'Login success',
+                    'token': token
                 }
             }
 
